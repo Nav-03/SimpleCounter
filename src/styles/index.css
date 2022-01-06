@@ -28,7 +28,7 @@ body{
     display: inline-flex;
     padding: 30px;
 }
-.extraFunctions{
+.counter-container{
     text-align: center;
     height: 100vh;
     

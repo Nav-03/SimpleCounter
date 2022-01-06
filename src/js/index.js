@@ -2,12 +2,47 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import propTypes from "prop-types";
+import { useState } from "react";
 
 // styles import
 import "../styles/index.css";
 
 //Main page layout
 function SimpleCounter(props) {
+	const [seconds, setSeconds] = useState(0);
+	const startTimer = () => {
+		setInterval(() => {
+			setSeconds((seconds) => seconds + 1);
+		}, 1000);
+		document
+			.querySelector(".start-button")
+			.setAttribute("disabled", "true");
+		document.querySelector(".stop-button").removeAttribute("disabled");
+
+		const pauseButton = document.createElement("button");
+		pauseButton.innerText = "pause";
+		pauseButton.className = "pause-button";
+		document.querySelector(".counter-container").appendChild(pauseButton);
+		pauseButton.addEventListener("click", () => {
+			if (pauseButton.innerText === "pause") {
+				pauseButton.innerText = "resume";
+			} else {
+				pauseButton.innerText = "pause";
+			}
+		});
+	};
+
+	const stopTimer = () => {
+		clearInterval(setSeconds(0));
+		if (!!document.querySelector("#counter")) {
+			document.querySelector("#counter").remove();
+		}
+
+		document.querySelector(".stop-button").setAttribute("disabled", "true");
+		document.querySelector(".start-button").removeAttribute("disabled");
+		document.querySelector(".pause-button").remove();
+	};
+	const currentCount = seconds;
 	return (
 		<>
 			<div className="bigCounter">
@@ -19,9 +54,16 @@ function SimpleCounter(props) {
 				<div className="two">{props.digitTwo % 10}</div>
 				<div className="one">{props.digitOne % 10}</div>
 			</div>
-			<div className="extraFunctions">
-				<button onclick="myFunction()">Start</button>
-				<button onclick="myFunction()">Stop</button>
+			{/* buttons */}
+
+			<div className="counter-container">
+				<button className="start-button" onClick={startTimer}>
+					Start
+				</button>
+				<button className="stop-button" onClick={stopTimer}>
+					Stop
+				</button>
+				<p id="counter">{currentCount}</p>
 			</div>
 		</>
 	);
