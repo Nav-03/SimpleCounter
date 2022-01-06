@@ -10,10 +10,13 @@ import "../styles/index.css";
 //Main page layout
 function SimpleCounter(props) {
 	const [seconds, setSeconds] = useState(0);
+	const [paused, setPaused] = useState(false);
+
 	const startTimer = () => {
-		setInterval(() => {
+		const current = setInterval(() => {
 			setSeconds((seconds) => seconds + 1);
 		}, 1000);
+
 		document
 			.querySelector(".start-button")
 			.setAttribute("disabled", "true");
@@ -28,6 +31,10 @@ function SimpleCounter(props) {
 				pauseButton.innerText = "resume";
 			} else {
 				pauseButton.innerText = "pause";
+				setInterval(() => {
+					setSeconds((seconds) => seconds + 1);
+				}, 1000);
+				setPaused(false);
 			}
 		});
 	};
@@ -42,6 +49,7 @@ function SimpleCounter(props) {
 		document.querySelector(".start-button").removeAttribute("disabled");
 		document.querySelector(".pause-button").remove();
 	};
+
 	const currentCount = seconds;
 	return (
 		<>
