@@ -1,27 +1,24 @@
 
-/* 
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+body{
+    background-image: linear-gradient(to bottom right, cornflowerblue, purple);
+}
 #app{
-    background-image: linear-gradient(to bottom right, cornflowerblue, lightpink);
+    
+   
     border-color: darkblue;
+
    
 
     
 }
 
 .bigCounter{
+    height: 300px;
     text-align: center;
     font-size: 140px;
     font-weight: 500;
+    text-shadow: 2px 6px 4px #000000;
     
 }
 
@@ -30,4 +27,9 @@
     justify-content: space-between;
     display: inline-flex;
     padding: 30px;
+}
+.extraFunctions{
+    text-align: center;
+    height: 100vh;
+    
 }
