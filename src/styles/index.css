@@ -10,3 +10,24 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+#app{
+    background-image: linear-gradient(to bottom right, cornflowerblue, lightpink);
+    border-color: darkblue;
+   
+
+    
+}
+
+.bigCounter{
+    text-align: center;
+    font-size: 140px;
+    font-weight: 500;
+    
+}
+
+
+.bigCounter div{
+    justify-content: space-between;
+    display: inline-flex;
+    padding: 30px;
+}

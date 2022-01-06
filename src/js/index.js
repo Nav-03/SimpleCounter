@@ -6,17 +6,32 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import Home from "./component/home.jsx";
 import SecondsCounter from "./component/SecondsCounter.jsx";
 
-//render your react application
-const startTime = Date.now();
 
-setInterval(() => {
-	let timediff = Date.now() - startTime;
-	let increase = Math.floor(timediff / 1000);
+
+function(props) {
+	return (
+		<div className="bigCounter">
+			<div className="calendar">
+				<i class="far fa-clock"></i>
+			</div>
+			<div className="four">{props.digitFour}</div>
+			<div className="three">{props.digitThree}</div>
+			<div className="two">{props.digitTow}</div>
+			<div className="one">{props.digitOne}</div>
+
+		</div>
+	)
+}
+
+let counter = 0;
+setInterval(funtion(){
 	ReactDOM.render(
-		<SecondsCounter seconds={increase} />,
-		document.querySelector("#app")
+		<SecondsCounter />,
+		document.querySelector('#app')
 	);
 }, 1000);
+
+
+//render your react application
