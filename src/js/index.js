@@ -1,4 +1,3 @@
-//import into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
 import propTypes from "prop-types";
@@ -34,14 +33,14 @@ function SimpleCounter(props) {
 				setInterval(() => {
 					setSeconds((seconds) => seconds + 1);
 				}, 1000);
-				setPaused(false);
+				setPaused(true);
 			}
 		});
 	};
 
 	const stopTimer = () => {
 		clearInterval(setSeconds(0));
-		if (!!document.querySelector("#counter")) {
+		if (!document.querySelector("#counter")) {
 			document.querySelector("#counter").remove();
 		}
 
