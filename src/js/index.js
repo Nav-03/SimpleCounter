@@ -6,21 +6,17 @@ import { SecondsCounter } from "./component/SecondsCounter.jsx";
 import "../styles/index.css";
 
 //getting values for props
+//render
+
 let counter = 0;
+let start = Date.now();
 setInterval(function () {
-	const four = Math.floor(counter / 1000);
-	const three = Math.floor(counter / 100);
-	const two = Math.floor(counter / 10);
-	const one = Math.floor(counter / 1);
+	let seconds = Math.floor((Date.now() - start) / 1000);
 	counter++;
-	//render
 	ReactDOM.render(
-		<SecondsCounter
-			digitOne={one}
-			digitTwo={two}
-			digitThree={three}
-			digitFour={four}
-		/>,
+		<div>
+			<SecondsCounter seconds={counter} />
+		</div>,
 		document.querySelector("#app")
 	);
 }, 1000);

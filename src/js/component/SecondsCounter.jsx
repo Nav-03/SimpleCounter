@@ -5,6 +5,7 @@ import { useState } from "react";
 //Main page layout
 
 export const SecondsCounter = (props) => {
+	const digits = props.seconds.toString().padStart(6, "0");
 	const [seconds, setSeconds] = useState(0);
 	const [paused, setPaused] = useState(false);
 
@@ -51,12 +52,14 @@ export const SecondsCounter = (props) => {
 		<>
 			<div className="bigCounter">
 				<div className="calendar">
-					<i class="far fa-clock"></i>
+					<i className="far fa-clock"></i>
 				</div>
-				<div className="four">{props.digitFour % 10}</div>
-				<div className="three">{props.digitThree % 10}</div>
-				<div className="two">{props.digitTwo % 10}</div>
-				<div className="one">{props.digitOne % 10}</div>
+				<div className="six">{digits[0]}</div>
+				<div className="five">{digits[1]}</div>
+				<div className="four">{digits[2]}</div>
+				<div className="three">{digits[3]}</div>
+				<div className="two">{digits[4]}</div>
+				<div className="one">{digits[5]}</div>
 			</div>
 			{/* buttons */}
 
@@ -75,8 +78,5 @@ export const SecondsCounter = (props) => {
 
 //proptypes
 SecondsCounter.prototypes = {
-	digitFour: propTypes.number,
-	digitThree: propTypes.number,
-	digitTwo: propTypes.number,
-	digitOne: propTypes.number,
+	seconds: propTypes.number,
 };
